@@ -2,8 +2,7 @@ import profile from "../assets/images/profile.png";
 import thumbnail from "../assets/images/thumbnail.png";
 import cards from "../assets/images/cards.png";
 import path from "../assets/images/path.png";
-import logo from "../assets/images/logo.png";
-import logoSmall from "../assets/images/logo-small.png";
+import logoo from "../assets/images/logoo.png";
 import empty from "../assets/images/empty.png";
 import breakfast from "../assets/images/breakfast.png";
 import lunch from "../assets/images/lunch.png";
@@ -27,4 +26,4 @@ import bbq from "../assets/images/bbq.png";
 
 
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, breakfast, lunch, background, facebook, google, pasta, spaghetti, pizza, user, bread, bruschetta, chicken, cake, coke, icetea, mango, bbq};
+export default { profile, thumbnail, cards, path, logoo, empty, breakfast, lunch, background, facebook, google, pasta, spaghetti, pizza, user, bread, bruschetta, chicken, cake, coke, icetea, mango, bbq};

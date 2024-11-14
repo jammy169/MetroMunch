@@ -1,88 +1,115 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity, Alert, Image, ImageBackground, SafeAreaView } from 'react-native';
+import { View, Text, Alert, SafeAreaView, ImageBackground, Image } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import FormField from '../../components/FormField';
+import CustomButton from '../../components/CustomButton';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const router = useRouter();
 
-  const handleLogin = async () => {
-    if (!username || !password) {
-      Alert.alert('Error', 'Please enter both username and password.');
-      return;
-    }
-
-    try {
-      // Mock authentication request
-      const response = await mockAuthService(username, password);
-
-      if (response.success) {
-        router.push('./home'); // Navigate to the home screen
-      } else {
-        Alert.alert('Login Failed', response.message);
-      }
-    } catch (error) {
-      console.error('Login error: ', error);
-      Alert.alert('Error', 'An error occurred while logging in.');
-    }
+  const handleLogin = (values, actions) => {
+    setTimeout(() => {
+      // Simulate login and redirect
+      Alert.alert('Success', 'You are logged in!');
+      router.push('./home'); // Replace with your home screen route
+      actions.setSubmitting(false);
+    }, 1000);
   };
 
-  // Mock authentication service function
-  const mockAuthService = (username, password) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (username === 'test' && password === 'password') {
-          resolve({ success: true });
-        } else {
-          resolve({ success: false, message: 'Invalid username or password.' });
-        }
-      }, 1000);
-    });
-  };
-
-  const handleForgotPassword = () => {
-    // This is where you would navigate to a Forgot Password screen
-    Alert.alert('Forgot Password', 'A password reset link has been sent to your email.');
-  };
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    password: Yup.string().required('Password is required'),
+  });
 
   return (
-    <ImageBackground
-      source={require('../../assets/images/background.jpg')} // Update with your background image path
-      className="flex-1 justify-center items-center"
-      style={{ resizeMode: 'cover', justifyContent: 'center' }} // Cover the entire background
-    >
-      <Image source={require('../../assets/images/logoo.png')} className="w-32 h-28 mb-0" />
-      <Text className="text-4xl font-rbold text-white mb-10 -mt-6 text-center">Log In to MetroMunch</Text>
-      <TextInput
-        className="w-72 p-2 border border-gray-300 rounded-lg bg-gray-100 mb-5"
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-        autoCapitalize="none"
-        placeholderTextColor="#888"
-      />
-      <TextInput
-        className="w-72 p-2 border border-gray-300 rounded-lg bg-gray-100 mb-5"
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        placeholderTextColor="#888"
-      />
-      {/* <TouchableOpacity className="w-72 p-2 bg-red-400 rounded-lg mb-5" onPress={handleLogin}> */}
-      <TouchableOpacity className="w-72 p-2 bg-red-400 rounded-lg mb-5" 
-onPress={() => router.push('./home')}>
-        <Text className="text-white text-center text-lg font-bold">Log In</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleForgotPassword} className="-mt-1">
-        <Text className="text-lg text-white text-center">Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => router.push('./lets')}>
-        <Text className="text-lg text-white text-center">Don't have an account? Sign Up</Text>
-      </TouchableOpacity>
-      
-    </ImageBackground>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ImageBackground
+        source={require('../../assets/images/background.jpg')} // Replace with your actual background image
+        style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+      >
+        {/* Logo */}
+        <Image
+          source={require('../../assets/images/logoo.png')} // Replace with your logo
+          style={{ width: 130, height: 120, marginBottom: -10 }}
+        />
+
+        {/* Heading */}
+        <Text style={{ fontSize: 30, fontFamily: 'Roboto-Bold', color: '#fff', marginBottom: 30 }}>
+          Login to MetroMunch
+        </Text>
+
+        {/* Formik Form */}
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          onSubmit={handleLogin}
+          validationSchema={validationSchema}
+        >
+          {({ values, handleChange, handleSubmit, errors, touched, isSubmitting }) => (
+            <>
+              {/* FormField for Email */}
+              <FormField
+                placeholder="Email"
+                value={values.email}
+                onChangeText={handleChange('email')}
+                keyboardType="email-address"
+                error={touched.email && errors.email}
+                containerStyle="bg-[#ffffff] px-10 py-4 rounded-full shadow-md mb-3"
+              />
+
+              {/* FormField for Password */}
+              <FormField
+                placeholder="Password"
+                value={values.password}
+                onChangeText={handleChange('password')}
+                secureTextEntry
+                error={touched.password && errors.password}
+                containerStyle="bg-[#ffffff] px-10 py-4 rounded-full shadow-md mb-3"
+              />
+
+              {/* Login Button with dynamic backgroundColor */}
+              <CustomButton
+                title="Login"
+                handlePress={handleSubmit}
+                containerStyles={{
+                  backgroundColor: isSubmitting ? '#aaa' : '#FF6F61', // Conditional background color
+                  paddingHorizontal: 40,
+                  paddingVertical: 16,
+                  borderRadius: 9999,
+                  marginTop: 20,
+                }}
+                textStyles={{
+                  color: 'white',  // White text color
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                }}
+                disabled={isSubmitting}
+              />
+            </>
+          )}
+        </Formik>
+
+        {/* Go to Sign Up Button */}
+        <CustomButton
+          title="Go to Sign Up"
+          handlePress={() => router.push('./lets')} // Replace with your signup screen route
+          containerStyles={{
+            backgroundColor: '#403f3f',
+            paddingHorizontal: 40,
+            paddingVertical: 16,
+            borderRadius: 9999,
+            marginTop: 20,
+          }}
+          textStyles={{
+            color: 'white',  // White text color
+            fontSize: 18,
+            fontWeight: 'bold',
+          }}
+          
+         />
+      </ImageBackground>
+    </SafeAreaView>
   );
 };
 

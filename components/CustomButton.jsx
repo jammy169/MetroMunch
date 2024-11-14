@@ -1,4 +1,5 @@
-import { ActivityIndicator, Text, TouchableOpacity } from "react-native";
+import React from 'react';
+import { ActivityIndicator, Text, TouchableOpacity } from 'react-native';
 
 const CustomButton = ({
   title,
@@ -11,12 +12,35 @@ const CustomButton = ({
     <TouchableOpacity
       onPress={handlePress}
       activeOpacity={0.7}
-      className={`bg-secondary rounded-xl min-h-[62px] flex flex-row justify-center items-center ${containerStyles} ${
-        isLoading ? "opacity-50" : ""
-      }`}
+      style={[
+        {
+          backgroundColor: '#ffffff', // White background
+          paddingHorizontal: 40, // Horizontal padding
+          paddingVertical: 16, // Vertical padding
+          borderRadius: 9999, // Fully rounded button
+          shadowColor: '#000', // Shadow color
+          shadowOffset: { width: 0, height: 4 }, // Shadow offset
+          shadowOpacity: 0.1, // Shadow opacity
+          shadowRadius: 6, // Shadow blur radius
+          marginTop: 16, // Margin top
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+        },
+        containerStyles, // Allow overriding via props
+      ]}
       disabled={isLoading}
     >
-      <Text className={`text-primary font-psemibold text-lg ${textStyles}`}>
+      <Text
+        style={[
+          {
+            color: '#000000', // Black text color
+            fontSize: 18, // Font size
+            fontWeight: 'bold', // Font weight
+          },
+          textStyles, // Allow overriding via props
+        ]}
+      >
         {title}
       </Text>
 
@@ -25,7 +49,7 @@ const CustomButton = ({
           animating={isLoading}
           color="#fff"
           size="small"
-          className="ml-2"
+          style={{ marginLeft: 8 }}
         />
       )}
     </TouchableOpacity>

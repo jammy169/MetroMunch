@@ -1,43 +1,38 @@
-import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import React from 'react';
+import { View, TextInput, Text } from 'react-native';
 
-import { icons } from "../constants";
-
-const FormField = ({
-  title,
-  value,
-  placeholder,
-  handleChangeText,
-  otherStyles,
-  ...props
+const FormField = ({ 
+  placeholder, 
+  value, 
+  onChangeText, 
+  error, 
+  containerStyle, 
+  secureTextEntry = false, 
+  keyboardType = 'default' 
 }) => {
-  const [showPassword, setShowPassword] = useState(false);
-
   return (
-    <View className={`space-y-2 ${otherStyles}`}>
-      <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
-
-      <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center">
-        <TextInput
-          className="flex-1 text-white font-psemibold text-base"
-          value={value}
-          placeholder={placeholder}
-          placeholderTextColor="#7B7B8B"
-          onChangeText={handleChangeText}
-          secureTextEntry={title === "Password" && !showPassword}
-          {...props}
-        />
-
-        {title === "Password" && (
-          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-            <Image
-              source={!showPassword ? icons.eye : icons.eyeHide}
-              className="w-6 h-6"
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        )}
-      </View>
+    <View style={[{ width: '100%', marginBottom: error ? 10 : 20 }, containerStyle]}>
+      {/* Display error message above the input box */}
+      {error && <Text style={{ color: 'red', marginBottom: 4, textAlign: 'center' }}>{error}</Text>}
+      <TextInput
+        placeholder={placeholder}
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
+        style={{
+          color: '#333',
+          fontSize: 16,
+          borderRadius: 10,
+          borderWidth: 1,
+          borderColor: error ? 'red' : '#ccc', // Conditionally set border color based on error
+          padding: 10,
+          marginLeft: 40,
+          marginRight: 40,
+          backgroundColor: '#f9f9f9', // Background color for input box
+        }}
+        placeholderTextColor="#888"
+      />
     </View>
   );
 };

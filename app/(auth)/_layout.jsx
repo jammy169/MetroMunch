@@ -17,27 +17,24 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (error) throw error;
-
     if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, error]);
 
   if (!fontsLoaded && !error) {
-    return null; // Prevents rendering if fonts aren't loaded
+    return null; // Prevent rendering if fonts aren't loaded
   }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Stack>
-        {/* Define your screens here */}
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="profile" options={{ headerShown: false }} />
         <Stack.Screen name="lets" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen name="front" options={{ headerShown: false }} />
-        {/* Add more screens as needed */}
         <Stack.Screen name='(tabs)' options={{headerShown:false}}/>
         <Stack.Screen name='order' options={{headerShown:false}}/>
       </Stack>

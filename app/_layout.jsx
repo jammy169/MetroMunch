@@ -33,7 +33,7 @@ const MainLayout = () => {
       <Stack>
         {/* Define your screens here */}
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="profile" options={{ headerShown: false }} />
+        {/* <Stack.Screen name="profile" options={{ headerShown: false }} /> */}
         <Stack.Screen name="lets" options={{ headerShown: false }} />
         <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen name="front" options={{ headerShown: false }} />
