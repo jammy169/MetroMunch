@@ -6,12 +6,15 @@ const IndexScreen = () => {
   const router = useRouter();
 
   return (
-    <SafeAreaView className="flex-1 bg-[#e26060]">
+    <SafeAreaView className="flex-1 bg-[#ec8383]">
       <View className="flex-1 justify-center items-center">
         <Text className="text-white text-4xl font-bold tracking-widest mt-20">
           MetroMunch
         </Text>
-        {/* Logo or Image */}
+        <Image
+          source={require('../assets/images/logoo.png')} // Add your sushi or restaurant logo image here
+          className="w-40 h-40 -mt-5 -mb-24"
+        />
         <Image
           source={require('../assets/images/burger.png')} // Add your sushi or restaurant logo image here
           className="w-40 h-40 mb-6 mt-20"

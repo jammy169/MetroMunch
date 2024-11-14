@@ -21,9 +21,10 @@ import cake from "../assets/images/cake.png";
 import coke from "../assets/images/coke.png";
 import icetea from "../assets/images/icetea.png";
 import mango from "../assets/images/mango.png";
+import bbq from "../assets/images/bbq.png";
 
 
 
 
 
-export default { profile, thumbnail, cards, path, logo, logoSmall, empty, breakfast, lunch, background, facebook, google, pasta, spaghetti, pizza, user, bread, bruschetta, chicken, cake, coke, icetea, mango};
+export default { profile, thumbnail, cards, path, logo, logoSmall, empty, breakfast, lunch, background, facebook, google, pasta, spaghetti, pizza, user, bread, bruschetta, chicken, cake, coke, icetea, mango, bbq};

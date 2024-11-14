@@ -62,7 +62,7 @@ const TabLayout = () => {
             headerShown:false,
             tabBarIcon:({color,focused})=>(
              <TabIcon
-              icon={icons.menu}
+              icon={icons.menu  }
               name="menu"
               focused={focused}
              />
