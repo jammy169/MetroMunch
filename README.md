@@ -2,30 +2,31 @@
 MetroMunch Mobile App.
 
 # Features
-* Share Projects
-* Message other developers
-* Rate others work
-* Search other developers
+* User Authentication
+* Menu Management
+* Real-time Offers
+* Responsive UI
 
 # Course Overview
-* Basic React Native Components
+* Building a dynamic food ordering app with React Native
 * Database Design using Appwrite
-* User Registration & Authenticaiton
-* Deployment
+* UI/UX design principles for a polished restaurant app
+
 
 # Tech Stack
 * React Native
 * AppWrite
-* HTML, CSS and JS
+* HTML, Tailwind CSS and JS
 
 # Home Screen
-<img src="assets/images/screenshot/onboarding.png">  
+<img src="('../../assets/images/home.png">  
 
 # Sign Up Screen
-<img src="assets/images/screenshot/signup.png">  
+<img src="('../../assets/images/signup.png">  
 
 # Sign In Screen
-<img src="assets/images/screenshot/login.png">  
+<img src="a('../../assets/images/signin.png">  
 
 # Tabs Screen
-<img src="assets/images/screenshot/tabs.png">  
+<img src="('../../assets/images/tabs.png">  
+

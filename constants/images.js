@@ -21,9 +21,14 @@ import coke from "../assets/images/coke.png";
 import icetea from "../assets/images/icetea.png";
 import mango from "../assets/images/mango.png";
 import bbq from "../assets/images/bbq.png";
+import tabs from "../assets/images/tabs.png";
+import signin from "../assets/images/signin.png";
+import signup from "../assets/images/signup.png";
+import home from "../assets/images/home.png";
 
 
 
 
 
-export default { profile, thumbnail, cards, path, logoo, empty, breakfast, lunch, background, facebook, google, pasta, spaghetti, pizza, user, bread, bruschetta, chicken, cake, coke, icetea, mango, bbq};
+
+export default { profile, thumbnail, cards, path, logoo,     empty, breakfast, lunch, background, facebook, google, pasta, spaghetti, pizza, user, bread, bruschetta, chicken, cake, coke, icetea, mango, bbq, tabs, signin, signup, home};
