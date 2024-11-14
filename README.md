@@ -22,7 +22,7 @@ MetroMunch Mobile App.
 <img src="('../../../assets/images/home.png">  
 
 # Sign Up Screen
-<img src="('../../../../assets/images/signup.png">  
+<img src="('assets/images/signup.png">  
 
 # Sign In Screen
 <img src="a('../../assets/images/signin.png">  
