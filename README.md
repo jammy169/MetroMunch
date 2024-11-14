@@ -30,6 +30,6 @@ MetroMunch Mobile App.
 # Tabs Screen
 <img src="('../../assets/images/tabs.png">  
 
-#  Walkthrough my App (copy the link paste it in browser)
+#  Walkthrough of MetroMunch 
 https://youtu.be/sAtuCdHOJ1Y
 
